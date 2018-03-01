@@ -19,7 +19,9 @@ mix.styles([
     'resources/assets/css/libs/bootstrap.css',
     'resources/assets/css/libs/font-awesome.css',
     'resources/assets/css/libs/metisMenu.css',
-    'resources/assets/css/libs/sb-admin-2.css'
+    'resources/assets/css/libs/sb-admin-2.css',
+    'resources/assets/css/libs/menubar.css'
+
 
 ], 'public/css/libs.css');
 
