@@ -31,8 +31,8 @@
         </div>
 
         <div class="form-group">
-            {!! Form::label('is_active', 'is Active:') !!}
-            {!! Form::checkbox('is_active',0, $user->is_active ) !!}
+            {!! Form::label('is_active', 'Role:') !!}
+            {!! Form::select('is_active', array(true=>'Active', false=>'Not Active') ,['class'=>'form-control']) !!}
         </div>
 
         <div class="form-group">
@@ -46,7 +46,15 @@
         </div>
 
         <div class="form-group">
-            {!! Form::submit('Update user', ['class'=>'btn btn-primary']) !!}
+            {!! Form::submit('Update user', ['class'=>'btn btn-primary col-sm-6']) !!}
+        </div>
+
+        {!! Form::close() !!}
+
+        {!! Form::open(['method' => 'DELETE', 'action'=>['AdminUsersController@destroy', $user->id]]) !!}
+
+        <div class=" form-group">
+            {!! Form::submit('Delete user', ['class'=>'btn btn-danger col-sm-6']) !!}
         </div>
 
         {!! Form::close() !!}
