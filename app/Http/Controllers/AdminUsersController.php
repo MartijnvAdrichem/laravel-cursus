@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Http\Requests\EditUserRequest;
 use App\Http\Requests\UserRequest;
 use App\Photo;
