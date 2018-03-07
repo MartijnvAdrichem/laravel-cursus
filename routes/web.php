@@ -11,6 +11,7 @@
 |
 */
 
+use App\Http\Controllers\CommentRepliesController;
 use App\User;
 
 Route::get('/', function () {
@@ -22,17 +23,32 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
-Route::get('/admin', function(){
-
-    return view('admin.index');
-});
+Route::get('/post/{id}', ['as'=>'home.post', 'uses'=>'AdminPostsController@post']);
 
 
 Route::group(['middleware'=>'admin'], function(){
+
+    Route::get('/admin', function(){
+
+        return view('admin.index');
+    });
+
     Route::resource('/admin/users', 'AdminUsersController', ['as'=>'admin']);
 
     Route::resource('/admin/posts', 'AdminPostsController', ['as'=>'admin']);
 
     Route::resource('/admin/categories', 'AdminCategoriesController', ['as'=>'admin']);
+
+    Route::resource('/admin/media', 'AdminMediasController', ['as'=>'admin']);
+
+    Route::resource('/admin/comments', 'PostCommentsController', ['as'=>'admin']);
+
+    Route::resource('/admin/comment/replies', 'CommentRepliesController', ['as'=>'admin']);
+    
+});
+
+Route::group(['middleware'=>'auth'], function(){
+
+    Route::post('comment/reply', 'CommentRepliesController@createReply');
+
 });
