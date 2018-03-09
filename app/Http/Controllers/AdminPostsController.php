@@ -73,9 +73,9 @@ class AdminPostsController extends Controller {
             $input['photo_id'] = $photo->id;
         }
 
-        $user = Auth::user();
-        $user->posts()->whereId($id)->first()->update($input);
-
+       // $user = Auth::user();
+        //$user->posts()->whereId($id)->first()->update($input);
+            Post::find($id)->update($input);
         return redirect('admin/posts');
 
     }
@@ -95,9 +95,9 @@ class AdminPostsController extends Controller {
         return redirect('admin/posts');
     }
 
-    public function post($id){
+    public function post($slug){
 
-        $post = Post::findOrFail($id);
+        $post = Post::findBySlugOrFail($slug);
         $comments = $post->comments()->whereIsActive(1)->get();
         return view('post', compact('post', 'comments'));
 

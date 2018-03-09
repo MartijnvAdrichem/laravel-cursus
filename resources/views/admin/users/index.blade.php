@@ -38,5 +38,5 @@
         @endif
         </tbody>
     </table>
-
+    <div class="row col-sm-6 col-sm-offset-5">{{$users->render()}}</div>
 @endsection()
