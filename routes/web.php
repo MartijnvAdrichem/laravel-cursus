@@ -44,7 +44,8 @@ Route::group(['middleware'=>'admin'], function(){
     Route::resource('/admin/comments', 'PostCommentsController', ['as'=>'admin']);
 
     Route::resource('/admin/comment/replies', 'CommentRepliesController', ['as'=>'admin']);
-    
+
+    Route::delete('/delete/media', 'AdminMediasController@deleteMedia');
 });
 
 Route::group(['middleware'=>'auth'], function(){
